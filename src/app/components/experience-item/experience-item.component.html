@@ -1,0 +1,9 @@
+<div>
+  <h3>{{ experienceItem.name }}</h3>
+  <h4>{{ experienceItem.company }}</h4>
+  <p *ngIf="experienceItem.terminated; then thenBlock else elseBlock"></p>
+  <ng-template #thenBlock>{{ experienceItem.startDate}} - {{ experienceItem.endDate}}</ng-template>
+  <ng-template #elseBlock>{{ experienceItem.startDate}} - Ongoing</ng-template>
+  <p>{{ experienceItem.description }}</p>
+</div>
+<br>

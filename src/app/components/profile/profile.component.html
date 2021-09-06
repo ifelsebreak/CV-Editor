@@ -1,0 +1,17 @@
+<div id="picture"><img id="profile-pic" src="../../../assets/images/profile_pic.jpg" alt="Me"></div>
+
+<div id="details">
+  <h2 id="name">{{profile.name}} {{profile.lastname}}</h2>
+  <h3>{{ profile.position }}</h3>
+  <p><fa-icon [icon]="faMapMarkerAlt"></fa-icon>&nbsp;&nbsp;{{profile.location}}</p>
+  <p><fa-icon [icon]="faCalendarAlt"></fa-icon>&nbsp;&nbsp;{{profile.birthdate}}</p>
+</div>
+<hr>
+<div id="contact">
+  <h4 style="font-size:large;position:relative;">Contact:</h4>
+  
+  <p><fa-icon [icon]="faPhoneAlt"></fa-icon>&nbsp;&nbsp;{{profile.phoneNumber}}</p>
+  <p><fa-icon [icon]="faEnvelopeOpenText"></fa-icon>&nbsp;&nbsp;{{profile.email}}</p>
+  <p id="github"><fa-icon [icon]="faGithub"></fa-icon>&nbsp;&nbsp;{{profile.github}}</p>  
+  <p><fa-icon [icon]="faLinkedin"></fa-icon>&nbsp;&nbsp;{{profile.linkedin}}</p>
+</div>

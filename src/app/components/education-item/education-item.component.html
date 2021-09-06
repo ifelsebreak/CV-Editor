@@ -1,0 +1,8 @@
+<div>
+  <h3>{{ course.name }}</h3>
+  <h4>{{ course.institute }}</h4>
+  <p *ngIf="course.completed; then thenBlock else elseBlock"></p>
+  <ng-template #thenBlock>{{ course.startDate}} - {{ course.endDate}} | Completed</ng-template>
+  <ng-template #elseBlock>{{ course.startDate}} - Ongoing</ng-template>
+</div>
+<br>
