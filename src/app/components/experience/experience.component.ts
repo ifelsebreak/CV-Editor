@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ExperienceItem } from '../../models/ExperienceItem';
 import { ExperienceService } from '../../services/experience.service';
-import { EXPERIENCES } from '../../repos/mock-experiences';
+import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-experience',
@@ -9,12 +10,51 @@ import { EXPERIENCES } from '../../repos/mock-experiences';
   styleUrls: ['./experience.component.css']
 })
 export class ExperienceComponent implements OnInit {
-  experiences: ExperienceItem[] = EXPERIENCES;
+  
+  experiences: ExperienceItem[] = [];
+  showEdit: boolean = false;
+  showAdd: boolean = false;
+  showForm: boolean = false;
+  faEdit = faEdit;
+  faTrashAlt = faTrashAlt;
 
-  constructor(private experienceService: ExperienceService) { }
+  constructor(private _experienceService: ExperienceService) { }
 
   ngOnInit(): void {
-    this.experienceService.getExperiences().subscribe((experiences) => (this.experiences= experiences));
+    this.experiences = this._experienceService.getExperiences();
+  }
+
+  toggleEditMode() {
+    if (this.showAdd || this.showForm) {
+      this.showAdd = false;
+      this.showEdit = false;
+      this.showForm = false;
+    } else {
+      this.showAdd = true;
+    }
+  };
+
+  showExperienceForm() {
+    this.showAdd = !this.showAdd;
+    this.showForm = !this.showForm;
+  }
+
+  /*
+  onSubmitCutomFuntion() {
+    console.log("specific");
+  }
+
+  addExperienceItem() {
+    alert('New experience added');
+    console.log('New experience added');
+    this._experienceService.addExperience();
+  }
+  */
+
+  addItem(newItem: ExperienceItem) {
+    console.log('New experience added');
+    this._experienceService.addExperience(newItem);
+    this.toggleEditMode();
   }
 
 }

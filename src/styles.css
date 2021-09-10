@@ -8,6 +8,7 @@
 
 body {
   font-family: "Poppins", sans-serif;
+  height: 100%;
 }
 
 
@@ -29,12 +30,16 @@ body {
 
 @media only screen and (min-width: 1050px) {
   /* For tablets: */
+
+  .side-and-main {
+    display: table;
+  }
+
   .side-bar, .main-content {
     margin: 0px;
     width: 100%;
-    height: 100%;
-    display: inline-block;
-    *display: inline;
+    display: table-cell;
+    height: auto;
     vertical-align: top;
   }
   
@@ -44,6 +49,8 @@ body {
     padding-left: 2em;
     padding-right: 2em;
     background: rgb(47, 69, 79);
+    height: 100vh;
+    min-height: 100vh;
   }
   
   .main-content {
@@ -56,22 +63,25 @@ body {
 }
 @media only screen and (min-width: 1500px) {
   /* For desktop: */
+  .side-and-main {
+    display: table;
+  }
   .side-bar, .main-content {
     margin: 0px;
     width: 100%;
-    height: 100%;
-    display: inline-block;
-    *display: inline;
-    vertical-align: top;
+    height: auto;
+    display: table-cell;
+
   }
   
   .side-bar {
     width: 25%;
-    height: 100%;
     padding-top: 2em;
     padding-left: 2em;
     padding-right: 2em;
     background: rgb(47, 69, 79);
+    height: 100vh;
+    min-height: 100vh;
   }
   
   .main-content {
@@ -82,6 +92,26 @@ body {
     background: white;
   }
 }
+
+  
+
+/* ____HOVER_____ 
+
+.edit-icon {
+  opacity: 0;
+}
+
+.block:hover .edit-icon{
+  animation-name: fadein;
+  animation-duration: 1s;
+}
+
+@keyframes fadein {
+from {opacity: 0;}
+to {opacity: 1;}
+}
+*/
+
 /* _________________________________ */
 
 .container {
@@ -95,12 +125,10 @@ body {
   background: #000;
   color: #fff;
   border: none;
-  padding: 10px 20px;
-  margin: 5px;
+  padding: 0.3rem 0.6rem;
+  margin: 0;
   border-radius: 5px;
-  cursor: pointer;
   text-decoration: none;
-  font-size: 15px;
   font-family: inherit;
 }
 .btn:focus {

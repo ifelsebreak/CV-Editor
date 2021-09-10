@@ -1,4 +1,5 @@
-<div class="block">
-  <h2>Education</h2>
+<div class="block" (mouseover)="showEdit=true" (mouseout)="showEdit=false">
+  <h2 *ngIf="showEdit">Education &nbsp;<fa-icon class="edit-icon" [icon]="faEdit"></fa-icon></h2>
+  <h2 *ngIf="!showEdit">Education</h2>
   <app-education-item *ngFor="let course of educationCourses" [course]="course"></app-education-item>
 </div>

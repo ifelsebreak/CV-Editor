@@ -1,0 +1,36 @@
+<div id="form">
+      <form #myform = "ngForm">
+      <input #name type = "text" name = "name" placeholder = "Your position" ngModel>
+      <br/>
+
+      <input #company type = "text" name = "company" placeholder = "Company name" ngModel>
+      <br/>
+
+      <input #location type = "text" name = "location" placeholder = "Location" ngModel>
+      <br/>
+
+      <label for="start">Start date:</label>
+      <input #startDate type="date" id="start" name="job-start"
+            value="2018-07-22"
+            min="1950-01-01" max="2099-12-31">
+      <br/>
+
+      <label for="end" style="margin-right: 1rem;">End date:</label><input #isTerminated (change)="checkValue($event)" type="checkbox" id="ongoing" name="terminated"><label for="ongoing"> I currently work here</label>
+      <input [attr.disabled]="dateDisabled ? '' : null" #endDate type="date" id="end" name="job-end"
+            [attr.value]="dateDisabled ? '' : '2050-10-01'"
+            min="1950-01-01" max="2099-12-31">
+      <br/>
+
+      <textarea #description type="text" name="description" placeholder="Job description" ngModel></textarea>
+      <br/>
+      <input (click)="addNewItem(
+            {'name': name.value,
+            'company': company.value,
+            'location': location.value,
+            'startDate': startDate.value,
+            'endDate': endDate.value,
+            'description': description.value,
+            'terminated': isTerminated.checked}
+            )" type = "submit" value = "Add">
+      </form>
+</div>

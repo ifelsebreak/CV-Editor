@@ -1,4 +1,28 @@
-<div class="block">
-  <h2>Experience</h2>
+<div class="block" (mouseover)="showEdit=true" (mouseout) ="showEdit=false" (touch)="showEdit=true">
+
+  <h2 *ngIf="!showEdit && !showAdd && !showForm">Experience</h2>
+
+  <div style="display:table;" *ngIf="showEdit && !showAdd && !showForm">
+    <h2>Experience &nbsp; </h2>
+    <fa-icon style="display: table-cell; font-size: 1.2rem; background: rgba(0,0,0,0); color: black;" (click)="toggleEditMode()" [icon]="faEdit"></fa-icon>
+   <!-- <app-button style="display: table-cell;" fontsize="1rem" backgroundcolor="rgba(0,0,0,0)" text="" [icon]=faEdit color="black" (btnClick)="toggleEditMode()"></app-button> -->
+  </div>
+
+  <div style="display:table;" *ngIf="showAdd || showForm">
+    <h2>Experience &nbsp; </h2>
+    <app-button style="display: table-cell;" color="red" fontsize="1rem" backgroundcolor="rgba(0,0,0,0)" text="Discard" [icon]=faTrashAlt (btnClick)="toggleEditMode()"></app-button>
+  </div>
+ 
+ 
+
+
+  <div *ngIf="showAdd">
+    <div class="plus-div" (click)="showExperienceForm()">+</div>
+  </div>
+
+  <div *ngIf="showForm && !showAdd"> 
+    <app-form (newItemEvent)="addItem($event)"></app-form>
+  </div>
+  
   <app-experience-item *ngFor="let experienceItem of experiences" [experienceItem]="experienceItem"></app-experience-item>
 </div>

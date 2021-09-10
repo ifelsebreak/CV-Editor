@@ -1,9 +1,14 @@
-export interface ExperienceItem {
-  id?: number;
-  name: string;
-  company: string;
-  startDate: string;
-  endDate: string;
-  description: string;
-  terminated: boolean;
+export class ExperienceItem {
+  public id?: number;
+  public name: string = '';
+  public company: string = '';
+  public location: string = '';
+  public startDate: string = '';
+  public endDate: string = '';
+  public description: string = '';
+  public terminated: boolean = false;
+
+  public constructor(init?:Partial<ExperienceItem>) {
+    Object.assign(this, init);
+}
 }

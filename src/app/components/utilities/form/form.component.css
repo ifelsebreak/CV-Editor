@@ -1,0 +1,38 @@
+input[type=text], input[type=date], textarea[type=text] {
+  width: 100%;
+  padding:10px;
+  border:0;
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+  margin: 0.5rem 0;
+  color: gray;
+}
+
+input[type=submit] {
+  padding: 5px 10px;
+  border: 0;
+  box-shadow:0 0 10px 3px rgba(0,0,0,0.06);
+  margin: 0.5rem 0;
+  transition: box-shadow .3s;
+}
+
+input[type=submit]:hover {
+  box-shadow: 0 0 15px 4px rgba(33,33,33,.2); 
+}
+
+#form {
+  height: 100%;
+  opacity: 1;
+  animation-name: formSlideDown;
+  animation-duration: 1s;
+}
+
+@keyframes formSlideDown {
+0% { height: 0px; opacity: 0; }
+50% { height: 26.1rem; opacity: 0; }
+100% { height: 26.1rem; opacity: 1; }
+}
+
+label {
+  font-size: 0.8rem;
+  color: rgb(100, 100, 100);
+}

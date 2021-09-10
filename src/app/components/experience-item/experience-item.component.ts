@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { ExperienceItem } from 'src/app/models/ExperienceItem';
 
 @Component({
@@ -7,8 +7,10 @@ import { ExperienceItem } from 'src/app/models/ExperienceItem';
   styleUrls: ['./experience-item.component.css']
 })
 export class ExperienceItemComponent implements OnInit {
-  @Input() experienceItem: ExperienceItem = {name: '', company: '', startDate: '', endDate: '', description: '', terminated: true};
+  @Input() experienceItem: ExperienceItem = {name: '', company: '', location: '', startDate: '', endDate: '', description: '', terminated: true};
 
+
+  
   constructor() { }
 
   ngOnInit(): void {

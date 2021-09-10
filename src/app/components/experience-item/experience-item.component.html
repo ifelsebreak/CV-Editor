@@ -1,9 +1,11 @@
 <div>
-  <h3>{{ experienceItem.name }}</h3>
-  <h4>{{ experienceItem.company }}</h4>
-  <p *ngIf="experienceItem.terminated; then thenBlock else elseBlock"></p>
-  <ng-template #thenBlock>{{ experienceItem.startDate}} - {{ experienceItem.endDate}}</ng-template>
-  <ng-template #elseBlock>{{ experienceItem.startDate}} - Ongoing</ng-template>
+  <h3 id="job">{{ experienceItem.name }}</h3>
+  <div id="company-and-location"><h4 id="company">{{ experienceItem.company }}</h4><h4 id="location">{{ experienceItem.location }}</h4></div>
+  <p *ngIf="!experienceItem.terminated; then thenBlock else elseBlock"></p>
+  <div id="date">
+    <ng-template #thenBlock>{{ experienceItem.startDate}} - {{ experienceItem.endDate}}</ng-template>
+    <ng-template #elseBlock>{{ experienceItem.startDate}} - Ongoing</ng-template>
+  </div>
   <p>{{ experienceItem.description }}</p>
 </div>
 <br>

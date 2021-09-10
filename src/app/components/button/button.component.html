@@ -1,1 +1,7 @@
-<button [ngStyle]="{ 'background-color': color }" class="btn" (click)="onClick()">{{ text }}</button>
+<div id="text-and-icon">
+  <button id="text" [ngStyle]="{ 'margin': margin, 'background-color': backgroundcolor, 'color': color, 'height': height, 'width': width, 'font-size': fontsize }" class="btn" (click)="onClick()">
+    <div id="icon" *ngIf="icon != undefined">
+      {{ text }} <fa-icon [icon]="icon"></fa-icon>
+    </div>
+  </button>
+</div>

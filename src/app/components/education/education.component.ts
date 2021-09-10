@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {EducationCourse} from 'src/app/models/EducationCourse';
-import {EDUCATIONS} from 'src/app/repos/mock-educations';
+import {EDUCATIONS} from 'src/app/repos/education-repo';
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -10,6 +11,10 @@ import {EDUCATIONS} from 'src/app/repos/mock-educations';
 })
 export class EducationComponent implements OnInit {
   educationCourses: EducationCourse[] = EDUCATIONS;
+
+  showEdit: boolean = false;
+
+  faEdit = faEdit;
 
   constructor() { }
 

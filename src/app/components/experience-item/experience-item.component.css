@@ -1,0 +1,25 @@
+#job {
+  margin: 0;
+  font-weight: bold;
+}
+
+#company {
+  margin-bottom: 0.3rem;
+  margin-right: 1.3rem;
+  font-size: 1.1rem;
+  display: table-cell;
+  padding-right: 0.6rem;
+}
+
+#location {
+ display: table-cell;
+ color: gray;
+}
+
+#company-and-location{
+  display: table;
+}
+
+#date {
+  margin-bottom: 0.6rem;
+}
