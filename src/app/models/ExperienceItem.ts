@@ -6,7 +6,7 @@ export class ExperienceItem {
   public startDate: string = '';
   public endDate: string = '';
   public description: string = '';
-  public terminated: boolean = false;
+  public ongoing: boolean = false;
 
   public constructor(init?:Partial<ExperienceItem>) {
     Object.assign(this, init);

@@ -28,7 +28,7 @@ import { CommonModule } from '@angular/common';
     ExperienceComponent,
     ExperienceItemComponent,
     ProfileComponent,
-    FormComponent
+    FormComponent,
   ],
   imports: [
     BrowserModule,

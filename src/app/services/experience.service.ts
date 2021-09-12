@@ -16,4 +16,9 @@ export class ExperienceService {
   addExperience(newItem: ExperienceItem): void {
     EXPERIENCES.unshift(newItem);
   }
+
+  deleteExperience(unwantedItemIndex: number): void {
+    // EXPERIENCES.splice(unwantedItemIndex, 1);
+    delete EXPERIENCES[unwantedItemIndex];
+  }
 }

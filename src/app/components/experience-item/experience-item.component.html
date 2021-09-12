@@ -1,11 +1,22 @@
-<div>
-  <h3 id="job">{{ experienceItem.name }}</h3>
-  <div id="company-and-location"><h4 id="company">{{ experienceItem.company }}</h4><h4 id="location">{{ experienceItem.location }}</h4></div>
-  <p *ngIf="!experienceItem.terminated; then thenBlock else elseBlock"></p>
-  <div id="date">
-    <ng-template #thenBlock>{{ experienceItem.startDate}} - {{ experienceItem.endDate}}</ng-template>
-    <ng-template #elseBlock>{{ experienceItem.startDate}} - Ongoing</ng-template>
-  </div>
-  <p>{{ experienceItem.description }}</p>
-</div>
-<br>
+<div *ngIf="showIndividualForm && showIndividualEdit; then individualThenBlock else individualElseBlock"></div>
+  <ng-template #individualThenBlock>
+    <app-form  style="margin: 200px;" text="Save"></app-form>
+  </ng-template>
+
+  <ng-template #individualElseBlock>
+    <h3 *ngIf="!showIndividualEdit" id="job">{{ experienceItem.name }}</h3>
+
+    <div style="display:table;" *ngIf="showIndividualEdit">
+      <h3 id="job">{{ experienceItem.name }} &nbsp; </h3>
+      <fa-icon style="display: table-cell; font-size: 1.2rem; background: rgba(0,0,0,0); color: black;" (click)="showIndividualForm = true" [icon]="faEdit"></fa-icon>
+      <fa-icon style="display: table-cell; font-size: 1.2rem; background: rgba(0,0,0,0); color: black; padding-left: 0.7rem;" (click)="deleteItem(this)" [icon]="faTrashAlt"></fa-icon>
+    </div>
+    <div id="company-and-location"><h4 id="company">{{ experienceItem.company }}</h4><h4 id="location">{{ experienceItem.location }}</h4></div>
+    <p *ngIf="experienceItem.ongoing; then thenBlock else elseBlock"></p>
+    <div id="date">
+      <ng-template #thenBlock>{{ experienceItem.startDate}} - Ongoing</ng-template>
+      <ng-template #elseBlock>{{ experienceItem.startDate}} - {{ experienceItem.endDate}}</ng-template>
+    </div>
+    <p>{{ experienceItem.description }}</p>
+  <br>
+  </ng-template>

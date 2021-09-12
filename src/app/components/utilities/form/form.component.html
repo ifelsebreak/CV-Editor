@@ -15,7 +15,7 @@
             min="1950-01-01" max="2099-12-31">
       <br/>
 
-      <label for="end" style="margin-right: 1rem;">End date:</label><input #isTerminated (change)="checkValue($event)" type="checkbox" id="ongoing" name="terminated"><label for="ongoing"> I currently work here</label>
+      <label for="end" style="margin-right: 1rem;">End date:</label><input #isTerminated (change)="checkValue($event)" type="checkbox" id="ongoing" name="ongoing"><label for="ongoing"> I currently work here</label>
       <input [attr.disabled]="dateDisabled ? '' : null" #endDate type="date" id="end" name="job-end"
             [attr.value]="dateDisabled ? '' : '2050-10-01'"
             min="1950-01-01" max="2099-12-31">
@@ -30,7 +30,7 @@
             'startDate': startDate.value,
             'endDate': endDate.value,
             'description': description.value,
-            'terminated': isTerminated.checked}
-            )" type = "submit" value = "Add">
+            'ongoing': isTerminated.checked}
+            )" type = "submit" value = "{{text}}">
       </form>
 </div>

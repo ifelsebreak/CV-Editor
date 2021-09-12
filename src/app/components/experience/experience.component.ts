@@ -15,6 +15,8 @@ export class ExperienceComponent implements OnInit {
   showEdit: boolean = false;
   showAdd: boolean = false;
   showForm: boolean = false;
+  showIndividualEdit: boolean = false;
+  showIndividualForm: boolean = false;
   faEdit = faEdit;
   faTrashAlt = faTrashAlt;
 
@@ -22,6 +24,7 @@ export class ExperienceComponent implements OnInit {
 
   ngOnInit(): void {
     this.experiences = this._experienceService.getExperiences();
+    console.log(this.experiences);
   }
 
   toggleEditMode() {
@@ -29,8 +32,11 @@ export class ExperienceComponent implements OnInit {
       this.showAdd = false;
       this.showEdit = false;
       this.showForm = false;
+      this.showIndividualEdit = false;
+      this.showIndividualForm = false;
     } else {
       this.showAdd = true;
+      this.showIndividualEdit = true;
     }
   };
 
@@ -39,22 +45,17 @@ export class ExperienceComponent implements OnInit {
     this.showForm = !this.showForm;
   }
 
-  /*
-  onSubmitCutomFuntion() {
-    console.log("specific");
-  }
-
-  addExperienceItem() {
-    alert('New experience added');
-    console.log('New experience added');
-    this._experienceService.addExperience();
-  }
-  */
-
   addItem(newItem: ExperienceItem) {
     console.log('New experience added');
     this._experienceService.addExperience(newItem);
     this.toggleEditMode();
+  }
+
+  deleteItem(clickedElementIndex: number) {
+    console.log(`Deleting experience item ${clickedElementIndex}`);
+    //const unwantedItemIndex = (<HTMLElement>(<HTMLElement>(<HTMLElement>((<HTMLElement>event.target).parentElement)?.parentElement)?.parentElement)?.parentElement).id;
+    //console.log(Number(unwantedItemIndex));
+    this._experienceService.deleteExperience(clickedElementIndex);
   }
 
 }

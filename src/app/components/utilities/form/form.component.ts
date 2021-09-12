@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import {NgForm, FormsModule} from '@angular/forms';
 import { ExperienceItem } from 'src/app/models/ExperienceItem';
 import { ExperienceItemComponent } from '../../experience-item/experience-item.component';
@@ -11,9 +11,11 @@ import { ExperienceItemComponent } from '../../experience-item/experience-item.c
 )
 export class FormComponent implements OnInit {
   @Output() newItemEvent = new EventEmitter<ExperienceItem>();
+  @Input() text: string = '';
   
   dateDisabled: boolean = false;
   unformattedEnd: Date = new Date();
+  unformattedStart: Date = new Date();
 
   constructor() { }
 
@@ -32,16 +34,25 @@ export class FormComponent implements OnInit {
     return i + "th";
 }
 
+  formatDate(date: Date) {
+    const ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(date)
+    const mo = new Intl.DateTimeFormat('en', { month: 'short' }).format(date)
+    let da = new Intl.DateTimeFormat('en', { day: 'numeric' }).format(date)
+    da = this.ordinal_suffix_of(Number(da)).toLocaleString();
+    return `${mo} ${da} ${ye}`;
+  }
+
   addNewItem(values: Object) {
     var newItemInstance = new ExperienceItem(values);
 
-    this.unformattedEnd = new Date(newItemInstance.endDate)
-    const ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(this.unformattedEnd)
-    const mo = new Intl.DateTimeFormat('en', { month: 'short' }).format(this.unformattedEnd)
-    let da = new Intl.DateTimeFormat('en', { day: 'numeric' }).format(this.unformattedEnd)
-    da = this.ordinal_suffix_of(Number(da));
-  
-    newItemInstance.endDate = `${mo} ${da} ${ye}`;
+    this.unformattedStart = new Date(newItemInstance.startDate);
+    newItemInstance.startDate = this.formatDate(this.unformattedStart);
+
+    if (!newItemInstance.ongoing) {
+      this.unformattedEnd = new Date(newItemInstance.endDate);
+      newItemInstance.endDate = this.formatDate(this.unformattedEnd);
+    }
+ 
     console.log(newItemInstance);
     this.newItemEvent.emit(newItemInstance);
   }

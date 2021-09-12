@@ -1,4 +1,4 @@
-<div class="block" (mouseover)="showEdit=true" (mouseout) ="showEdit=false" (touch)="showEdit=true">
+<div class="block" (mouseover)="showEdit=true"  (mouseout)="showEdit=false">
 
   <h2 *ngIf="!showEdit && !showAdd && !showForm">Experience</h2>
 
@@ -21,8 +21,9 @@
   </div>
 
   <div *ngIf="showForm && !showAdd"> 
-    <app-form (newItemEvent)="addItem($event)"></app-form>
+    <app-form text="Add" (newItemEvent)="addItem($event)"></app-form>
   </div>
-  
-  <app-experience-item *ngFor="let experienceItem of experiences" [experienceItem]="experienceItem"></app-experience-item>
-</div>
+  <div *ngFor="let experienceItem of experiences; let i=index;">
+    <app-experience-item *ngIf="experienceItem != null" id="{{ experienceItem.id }}" (deleteItemEvent)="deleteItem($event)" [experienceItem]="experienceItem" [showIndividualEdit]="showIndividualEdit" [showIndividualForm]="showIndividualForm"></app-experience-item>
+  </div>
+</div><!-- (deleteItemEvent)="deleteItem(unwantedItemIndex)"-->
