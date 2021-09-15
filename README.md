@@ -1,6 +1,6 @@
 # CV Editor
-https://img.shields.io/badge/language-Typescript-yellow
-https://img.shields.io/badge/framework-Angular-red
+![Language](https://img.shields.io/badge/language-Typescript-yellow)
+![Framework](https://img.shields.io/badge/framework-Angular-red)
 
 Simple web app fpr creating and editing CVs.
 
