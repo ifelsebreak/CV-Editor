@@ -2,7 +2,7 @@
 ![Language](https://img.shields.io/badge/language-Typescript-yellow)
 ![Framework](https://img.shields.io/badge/framework-Angular-red)
 
-Simple web app fpr creating and editing CVs.
+Simple web app for creating and editing CVs.
 
 Add new job experiencies, education courses, skills, a cover letter and custom fields, as well as a brief summary of your personal profile.
 
